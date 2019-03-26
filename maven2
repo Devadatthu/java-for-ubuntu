@@ -1,0 +1,52 @@
+How To Install Apache Maven on Ubuntu 18.04 and 16.04
+Written by Rahul, Updated on July 5, 2018
+ Linux Tutorials apache, Apache Maven, install mavel, Maven 
+
+ 
+Apache Maven is a software project management and comprehension tool. Maven can manage a project’s build, reporting, and documentation from a central piece of information. This tutorial will help you to install Apache Maven on your Ubuntu 18.04 LTS, 16.04 LTS, and Ubuntu 14.04 LTS systems.
+
+Step 1 – Install Java
+First of all, you make sure that you installed appropriate Java on your system.Java is the primary requirement of installing Apache Maven on nix systems. So firstly you need to install Java on your system also make sure you have installed JDK and JRE both.
+
+java -version 
+
+java version "1.8.0_171"
+Java(TM) SE Runtime Environment (build 1.8.0_171-b11)
+Java HotSpot(TM) 64-Bit Server VM (build 25.171-b11, mixed mode)
+If you don’t have Java Development Kit installed on your system. Visit install Java 8 on Ubuntu
+
+Step 2 – Install Apache Maven on Ubuntu
+After verifying java version on your system. Download Apache maven from its official website or use following command to download Apache Maven 3.5.4.
+
+cd /usr/local
+wget http://www-eu.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz
+Now extract downloaded archive using following command.
+
+sudo tar xzf apache-maven-3.5.4-bin.tar.gz
+sudo ln -s apache-maven-3.5.4 apache-maven
+Step 3 – Setup Environment Variables
+As you have downloaded pre compiled Apache Maven files on your system. Now set the environments variables by creating new file /etc/profile.d/maven.sh.
+
+sudo vi /etc/profile.d/apache-maven.sh
+and add following content.
+
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+export M2_HOME=/usr/local/apache-maven
+export MAVEN_HOME=/usr/local/apache-maven
+export PATH=${M2_HOME}/bin:${PATH}
+Now load the environment variables in current shell using following command.
+
+source /etc/profile.d/apache-maven.sh
+Step 4 – Verify Installation
+You have successfully installed and configured Apache Maven on your Ubuntu system. Use the following command to check the version of Maven.
+
+mvn -version
+
+Apache Maven 3.5.4 (1edded0938998edf8bf061f1ceb3cfdeccf443fe; 2018-06-18T00:03:14+05:30)
+Maven home: /usr/local/apache-maven
+Java version: 1.8.0_171, vendor: Oracle Corporation, runtime: /usr/lib/jvm/java-8-oracle/jre
+Default locale: en_IN, platform encoding: UTF-8
+OS name: "linux", version: "4.15.0-20-generic", arch: "amd64", family: "unix"
+Finally, remove the downloaded archive file from local.
+
+rm -f apache-maven-3.5.4-bin.tar.gz
