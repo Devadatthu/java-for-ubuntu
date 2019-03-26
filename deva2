@@ -1,0 +1,39 @@
+How to Install JAVA 8 on Ubuntu 18.04/16.04, Linux Mint 19/18
+Written by Rahul, Updated on February 6, 2019
+ JAVA install java on ubuntu, java, jdk, jre, linuxmint, Oracle, ppa, Ubuntu 
+
+ 
+There are two standard types of installation available are JDK and JRE. JDK (Java Development Kit) provides the ability to develop a new Java application, which includes Java compiler. JRE (Java Runtime Environment) provides the runtime environment for any Java application with applets. The Java developers required to install JDK and JRE both on their system to create new Java Applications.
+
+Read this => Install Oracle Java 11 on Ubuntu 16.04 LTS (Xenial)
+Read this => Install Oracle Java 11 on Ubuntu 18.04 LTS (Bionic)
+Use this tutorial to Install Oracle Java 8 on Ubuntu 18.04 LTS, 16.04 LTS, 14.04 LTS and LinuxMint 19, 18 using PPA. Follow the below steps to Install Oracle Java 8 on Ubuntu command line.
+
+Step 1 – Install Oracle Java 8 on Ubuntu
+You need to enable additional repository to your system to install Java 8 on Ubuntu VPS. After that install Oracle Java 8 on an Ubuntu system using apt-get. This repository contains a package named oracle-java8-installer, Which is not an actual Java package. Instead of that, this package contains a script to install Java on Ubuntu.
+
+Run below commands to install Java 8 on Ubuntu and LinuxMint.
+
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+Step 2 – Verify Java Inatallation
+The apt repository also provides package oracle-java8-set-default to set Java 8 as your default Java version. This package will be installed along with Java installation. To make sure run below command.
+
+sudo apt-get install oracle-java8-set-default
+After successfully installing Oracle Java 8 using the above steps, Let’s verify the installed version using the following command.
+
+java -version
+
+java version "1.8.0_201"
+Java(TM) SE Runtime Environment (build 1.8.0_201-b09)
+Java HotSpot(TM) 64-Bit Server VM (build 25.201-b09, mixed mode)
+Step 3 – Setup JAVA_HOME and JRE_HOME Variable
+After installing Java on Linux system, You must have to set JAVA_HOME and JRE_HOME environment variables. Which is used by many Java applications to find Java libraries during runtime. You can set these variables in /etc/environment file using the following command.
+
+cat >> /etc/environment <<EOL
+JAVA_HOME=/usr/lib/jvm/java-8-oracle
+JRE_HOME=/usr/lib/jvm/java-8-oracle/jre
+EOL
+https://www.youtube.com/watch?v=JQxIFr4zRRs
+All done, you have successfully installed Java 8 on a Linux system. You may also need to install Tomcat server to run your Java web application. Use our another tutorial to Install Tomcat 7 or Install Tomcat 8 or Install Tomcat 9 on Ubuntu, Debian, and LinuxMint systems.
